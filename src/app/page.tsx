@@ -1,8 +1,8 @@
 
-export default function Home() {
+export  function Home() {
   return (
     <div>
-      hello
+      
     </div>
   );
 }
