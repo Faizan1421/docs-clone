@@ -21,34 +21,34 @@ import { useEditorStore } from '@/store/use-editor-store';
 
 
 export const Editor = () => {
-  const {setEditor} = useEditorStore()
+  const { setEditor } = useEditorStore()
   const editor = useEditor({
-    onCreate({editor}){
+    onCreate({ editor }) {
       setEditor(editor);
     },
-    onDestroy(){
+    onDestroy() {
       setEditor(null)
     },
-    onUpdate({editor}){
+    onUpdate({ editor }) {
       setEditor(editor)
     },
-    onSelectionUpdate({editor}){
+    onSelectionUpdate({ editor }) {
       setEditor(editor)
     },
-    onTransaction({editor}){
+    onTransaction({ editor }) {
       setEditor(editor)
     },
-    onFocus({editor}){
+    onFocus({ editor }) {
       setEditor(editor)
     },
-    onBlur({editor}){
+    onBlur({ editor }) {
       setEditor(editor)
     },
-    onContentError({editor}){
+    onContentError({ editor }) {
       setEditor(editor)
     },
     editorProps: {
-      attributes:{
+      attributes: {
         style: "padding-left: 56px; padding-right:56px;",
         class: "focus:outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] pt-10 pr-14 pb-10 cursor-text"
       },
@@ -58,7 +58,7 @@ export const Editor = () => {
       Link.configure({
         openOnClick: false,
         autolink: true,
-        defaultProtocol:"https",
+        defaultProtocol: "https",
       }),
       Color,
       Highlight.configure({
@@ -74,7 +74,9 @@ export const Editor = () => {
       TableCell,
       TableHeader,
       TableRow,
-      Image,
+      Image.configure({
+        inline: true,
+      }),
       ImageResize,
       Underline,
     ],
