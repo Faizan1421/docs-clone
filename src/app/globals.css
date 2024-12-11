@@ -91,6 +91,17 @@ body::-webkit-scrollbar{
 }
 
 .tiptap {
+   /* Link styles */
+   a {
+    @apply text-blue-600;
+    cursor: pointer;
+
+    &:hover {
+      @apply underline;
+    }
+  }
+
+  /* Image */
   img {
     display: block;
     height: auto;
@@ -180,21 +191,25 @@ body::-webkit-scrollbar{
     }
   
     h1 { 
-      font-size: 1.4rem; 
+      font-size: 35px; 
     }
   
     h2 { 
-      font-size: 1.2rem; 
+      font-size: 30px; 
     }
   
     h3 { 
-      font-size: 1.1rem; 
+      font-size: 24px; 
     }
   
-    h4, 
-    h5, 
+    h4{
+      font-size: 18.5px;
+    }
+    h5{
+      font-size: 17px;
+    }
     h6 { 
-      font-size: 1rem; 
+      font-size: 16px; 
     }
 
   
