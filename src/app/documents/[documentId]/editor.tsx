@@ -16,6 +16,7 @@ import TextStyle from '@tiptap/extension-text-style'
 import { Color } from '@tiptap/extension-color'
 import Highlight from '@tiptap/extension-highlight'
 import Link from '@tiptap/extension-link'
+import TextAlign from '@tiptap/extension-text-align'
 
 import { useEditorStore } from '@/store/use-editor-store';
 
@@ -55,30 +56,33 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      Color,
+      FontFamily,
+      TextStyle,
+      TaskList,
+      Table,
+      TableCell,
+      TableHeader,
+      TableRow,
+      ImageResize,
+      Underline,
       Link.configure({
         openOnClick: false,
         autolink: true,
         defaultProtocol: "https",
       }),
-      Color,
       Highlight.configure({
         multicolor: true,
       }),
-      FontFamily,
-      TextStyle,
-      TaskList,
+      TextAlign.configure({
+        types: ['heading', 'paragraph'],
+      }),
       TaskItem.configure({
         nested: true,
       }),
-      Table,
-      TableCell,
-      TableHeader,
-      TableRow,
       Image.configure({
         inline: true,
       }),
-      ImageResize,
-      Underline,
     ],
     content: 'hello',
   })
