@@ -4,6 +4,7 @@ import { useQuery } from 'convex/react';
 import { api } from '../../../convex/_generated/api';
 import { Navbar } from './navbar';
 import { TemplatesGallery } from './templates-gallery';
+import Image from 'next/image';
 
 const Home = () => {
   const documents = useQuery(api.documents.get)
@@ -11,7 +12,7 @@ const Home = () => {
   if (documents === undefined) {
     return (
       <div className='min-h-screen flex items-center justify-center'>
-        <img src="/loading-spinner.png" className='animate-spin' alt="" />
+        <Image src='/loading-spinner.png' width={100} height={100} alt="loading" className="animate-spin" />
       </div>
     )
   }
