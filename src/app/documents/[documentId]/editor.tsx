@@ -102,7 +102,7 @@ export const Editor = () => {
       <Ruler />
       <div className='min-w-max flex -z-0 justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0 relative'
       >
-        {/* <img src='/sufi.png' alt='Watermark' className='absolute top-0 left-0 right-0 bottom-0 m-auto max-w-full pointer-events-none opacity-10  z-50' /> */}
+        <img src='/sufi.png' alt='Watermark' className='absolute top-0 left-0 right-0 bottom-0 m-auto max-w-full pointer-events-none opacity-5  z-50' />
 
         <EditorContent editor={editor} />
       </div>
