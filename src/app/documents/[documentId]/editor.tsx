@@ -13,11 +13,13 @@ import ImageResize from 'tiptap-extension-resize-image'
 import Underline from '@tiptap/extension-underline'
 import FontFamily from '@tiptap/extension-font-family'
 import TextStyle from '@tiptap/extension-text-style'
-import { Color } from '@tiptap/extension-color'
 import Highlight from '@tiptap/extension-highlight'
 import Link from '@tiptap/extension-link'
 import TextAlign from '@tiptap/extension-text-align'
+import { Color } from '@tiptap/extension-color'
 
+import { FontSizeExtension } from '@/extensions/font-size';
+import { LineHeightExtension } from '@/extensions/line-height';
 import { useEditorStore } from '@/store/use-editor-store';
 
 
@@ -66,6 +68,13 @@ export const Editor = () => {
       TableRow,
       ImageResize,
       Underline,
+      FontSizeExtension,
+      LineHeightExtension.configure({
+        types: ['heading', 'paragraph'],
+      }),
+      TextAlign.configure({
+        types: ['heading', 'paragraph'],
+      }),
       Link.configure({
         openOnClick: false,
         autolink: true,
@@ -73,9 +82,6 @@ export const Editor = () => {
       }),
       Highlight.configure({
         multicolor: true,
-      }),
-      TextAlign.configure({
-        types: ['heading', 'paragraph'],
       }),
       TaskItem.configure({
         nested: true,
