@@ -11,12 +11,12 @@ export const Navbar = () => {
         <Link href="/">
           <Image src='/logo.png' alt='Logo' width={36} height={36} />
         </Link>
-        <h3 className='text-xl'>Docs</h3>
+        <h3 className='text-[20px]'>Docs</h3>
       </div>
 
       {/* Search Input */}
       <SearchInput />
-      
+
       {/* Profile Icon */}
       <div />
     </nav>
