@@ -1,5 +1,4 @@
 import { LoaderIcon } from "lucide-react";
-import Image from "next/image";
 
 interface FullscreenLoaderProps {
   label?: string;
