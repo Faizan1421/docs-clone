@@ -7,6 +7,7 @@ import { ConvexReactClient, Authenticated, Unauthenticated, AuthLoading } from "
 import { SiGoogledocs } from "react-icons/si";
 import Image from "next/image";
 import Link from "next/link";
+import { FullsceenLoader } from "./fullscreen-loader";
 
 const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
@@ -26,19 +27,17 @@ export function ConvexClientProvider({ children }: { children: ReactNode }) {
               <span className="font-medium flex gap-1 text:2xl  md:text-3xl">
                 <SiGoogledocs className="size-5 md:size-7 fill-blue-500" /> Google Docs by</span>
               <span className="text-blue-500 font-semibold text-4xl md:text-5xl">Muhammad Sufyan</span>
-            <hr className="bg-neutral-300 w-full h-0.5" />
+              <hr className="bg-neutral-300 w-full h-0.5" />
             </div>
             <div className="pt-8">
-            <SignIn />
+              <SignIn routing="hash" />
             </div>
           </div>
         </Unauthenticated>
         <AuthLoading >
-          <div className="flex flex-col items-center justify-center min-h-screen">
-            <Image src='/loading-spinner.png' width={100} height={100} alt="loading" className="animate-spin" />
-          </div>
+          <FullsceenLoader label="Loading..." />
         </AuthLoading>
-      </ConvexProviderWithClerk>;
+      </ConvexProviderWithClerk>
     </ClerkProvider>
   )
 }
