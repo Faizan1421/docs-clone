@@ -15,6 +15,7 @@ import { Id } from "../../convex/_generated/dataModel";
 import { api } from "../../convex/_generated/api";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 interface RenameDialogProps {
   documentId: Id<"documents">;
@@ -37,7 +38,8 @@ export const RenameDialog = ({
     e.preventDefault();
     setIsUpdating(true)
     update({ id: documentId, title: title.trim() || "Untitled" })
-      .then(() => setOpen(false))
+      .catch(() => toast.error("Something went wrong"))
+      .then(() => toast.success("Document updated"))
       .finally(() => {
         setIsUpdating(false);
         setOpen(false)
@@ -53,7 +55,7 @@ export const RenameDialog = ({
         {children}
       </DialogTrigger>
       <DialogContent
-      onClick={(e)=> e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
         <form
           onSubmit={onSubmit}
@@ -69,7 +71,7 @@ export const RenameDialog = ({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Document name"
-              onClick={(e) => {e.stopPropagation()} }
+              onClick={(e) => { e.stopPropagation() }}
             />
           </div>
           <DialogFooter>
@@ -77,7 +79,7 @@ export const RenameDialog = ({
               type="button"
               variant="ghost"
               disabled={isUpdating}
-              onClick={(e) => {e.stopPropagation(); setOpen(false);}}
+              onClick={(e) => { e.stopPropagation(); setOpen(false); }}
             >
               Cancel
             </Button>

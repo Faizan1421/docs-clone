@@ -1,3 +1,4 @@
+import { LoaderIcon } from "lucide-react";
 import Image from "next/image";
 
 interface FullscreenLoaderProps {
@@ -6,9 +7,9 @@ interface FullscreenLoaderProps {
 
 export const FullsceenLoader = ({ label }: FullscreenLoaderProps) => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-2">
-      <Image src='/loading-spinner.png' width={90} height={90} alt="Spinner" className="animate-spin" />
-      {label && <p className="text-sm text-muted-foreground">{label}</p>}
+    <div className="min-h-screen flex flex-col items-center justify-center">
+      <LoaderIcon className="animate-spin text-muted-foreground" />
+      {label && <p className="text-sm text-muted-foreground pt-1">{label}</p>}
     </div>
   )
 }

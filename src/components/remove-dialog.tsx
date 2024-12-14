@@ -1,4 +1,5 @@
 "use client";
+import { toast } from 'sonner'
 import { useState } from "react";
 import { useMutation } from "convex/react";
 
@@ -52,6 +53,8 @@ export const RemoveDialog = ({
               e.stopPropagation()
               setIsRemoving(true)
               remove({ id: documentId })
+                .catch(() => toast.error("Something went wrong"))
+                .then(()=> toast.success("Document removed"))
                 .finally(() => setIsRemoving(false))
             }}
             className="bg-red-600 hover:bg-red-600/70"

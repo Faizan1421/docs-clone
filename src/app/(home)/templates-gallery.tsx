@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 import { templates } from '@/constants/templates'
 import { api } from '../../../convex/_generated/api'
+import { toast } from 'sonner'
 
 
 export const TemplatesGallery = () => {
@@ -24,6 +25,7 @@ export const TemplatesGallery = () => {
     setIsCreating(true)
     create({ title, initialContent })
       .then((documentId) => {
+        toast.success("Document created")
         router.push(`/documents/${documentId}`)
       })
       .finally(() => {
