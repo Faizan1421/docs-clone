@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { RemoveDialog } from "@/components/remove-dialog";
-import { ExternalLinkIcon, MoreVertical, TrashIcon } from "lucide-react";
+import { RenameDialog } from "@/components/rename-dialog";
+import { ExternalLinkIcon, FilePenIcon, MoreVertical, TrashIcon } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -26,19 +27,30 @@ export const DocumentMenu = ({ documentId, title, onNewTab }: DocumentMenuProps)
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <RemoveDialog documentId={documentId}>
-          <DropdownMenuItem
-          onSelect={(e)=> e.preventDefault()}
-          onClick={(e)=> e.stopPropagation()}
-          >
-            <TrashIcon className="size-4 mr-2" />
-            Remove
-          </DropdownMenuItem>
-        </RemoveDialog>
         <DropdownMenuItem onClick={() => onNewTab(documentId)}>
           <ExternalLinkIcon className="size-4 mr-2" />
           Open in a new tab
         </DropdownMenuItem>
+        <RenameDialog documentId={documentId} initialTitle={title}>
+          <DropdownMenuItem
+            onSelect={(e) => e.preventDefault()}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <FilePenIcon className="size-4 mr-2" />
+            Rename
+          </DropdownMenuItem>
+        </RenameDialog>
+        <RemoveDialog documentId={documentId}>
+          <DropdownMenuItem
+            onSelect={(e) => e.preventDefault()}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-red-500 flex ">
+              <TrashIcon className="size-4 mr-2" />
+              Remove
+            </div>
+          </DropdownMenuItem>
+        </RemoveDialog>
       </DropdownMenuContent>
     </DropdownMenu>
   );
