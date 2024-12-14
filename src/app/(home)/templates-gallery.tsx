@@ -25,8 +25,9 @@ export const TemplatesGallery = () => {
     setIsCreating(true)
     create({ title, initialContent })
       .then((documentId) => {
-        toast.success("Document created")
-        router.push(`/documents/${documentId}`)
+        toast.info("Please wait....");
+        router.push(`/documents/${documentId}`);
+        setTimeout(() => (toast.success("Document Created!")), 700)
       })
       .finally(() => {
         setIsCreating(false)

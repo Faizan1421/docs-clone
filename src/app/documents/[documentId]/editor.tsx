@@ -22,12 +22,14 @@ import { FontSizeExtension } from '@/extensions/font-size';
 import { LineHeightExtension } from '@/extensions/line-height';
 import { useEditorStore } from '@/store/use-editor-store';
 import { Ruler } from './ruler';
-
+import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
+import { Threads } from './threads';
 
 export const Editor = () => {
+  const liveblocks = useLiveblocksExtension();
   const { setEditor } = useEditorStore()
-  const editor = useEditor({
 
+  const editor = useEditor({
     immediatelyRender: false,
 
     onCreate({ editor }) {
@@ -61,7 +63,10 @@ export const Editor = () => {
       },
     },
     extensions: [
-      StarterKit,
+      liveblocks,
+      StarterKit.configure({
+        history: false,
+      }),
       Color,
       FontFamily,
       TextStyle,
@@ -94,7 +99,7 @@ export const Editor = () => {
         inline: true,
       }),
     ],
-    content: 'hello',
+    content: '',
   })
 
   return (
@@ -105,6 +110,7 @@ export const Editor = () => {
         <img src='/sufi.png' alt='Watermark' className='absolute top-0 left-0 right-0 bottom-0 m-auto max-w-full pointer-events-none opacity-5  z-50' />
 
         <EditorContent editor={editor} />
+        <Threads editor={editor} />
       </div>
     </div>
   );
