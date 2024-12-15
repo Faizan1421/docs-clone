@@ -1,4 +1,4 @@
-# Google Docs Clone
+# Google Docs Clone | Next 15
 
 ![Google Docs Clone Banner](https://i.ibb.co/qdtTM6R/docs-clone-banner.png)
 
