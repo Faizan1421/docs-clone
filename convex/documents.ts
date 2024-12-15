@@ -9,13 +9,13 @@ export const getByIds = query({
     const documents = []
 
     for (const id of ids) {
-        const document = await ctx.db.get(id)
+      const document = await ctx.db.get(id)
 
-        if (document) {
-          documents.push({ id: document._id, name: document.title })
-        } else {
-          documents.push({ id, name: "[Removed]" })
-        }
+      if (document) {
+        documents.push({ id: document._id, name: document.title })
+      } else {
+        documents.push({ id, name: "[Removed]" })
+      }
     }
     return documents;
   }
@@ -147,6 +147,12 @@ export const updateById = mutation({
 export const getById = query({
   args: { id: v.id("documents") },
   handler: async (ctx, { id }) => {
-    return await ctx.db.get(id)
+    const document = await ctx.db.get(id)
+
+    if (!document) {
+      throw new ConvexError("Document not found")
+    }
+    
+    return document
   },
 })
