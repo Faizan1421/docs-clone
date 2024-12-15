@@ -15,6 +15,7 @@ This is a Google Docs clone built with **Next.js**, **React**, **Tailwind CSS**,
   - Tables
   - Images with resizing
   - Task lists
+  - and many more...
 - **Customizable themes** with Tailwind CSS
 - **Responsive design**
 - **Toolbar for common actions**
