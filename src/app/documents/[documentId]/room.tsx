@@ -9,7 +9,6 @@ import {
 import { useParams } from "next/navigation";
 import { SufiLoading } from "@/components/sufi-loader";
 import { getUsers, getDocuments } from "./actions";
-import { toast } from "sonner";
 import { Id } from "../../../../convex/_generated/dataModel";
 
 type User = { id: string; name: string; avatar: string }
@@ -21,13 +20,8 @@ export function Room({ children }: { children: ReactNode }) {
 
   const fetchUsers = useMemo(
     () => async () => {
-      try {
         const list = await getUsers()
         setUsers(list)
-
-      } catch (error) {
-        toast.error("Failed to fetch users")
-      }
     }, []
   )
 

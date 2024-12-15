@@ -8,7 +8,7 @@ import { DocumentsTable } from './documents-table'
 import { useSearchParam } from '@/hooks/use-search-param'
 
 const Home = () => {
-  const [search, setSearch] = useSearchParam()
+  const [search] = useSearchParam()
 
   const {
     results,

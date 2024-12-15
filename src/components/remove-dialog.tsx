@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Id } from "../../convex/_generated/dataModel";
 import { api } from "../../convex/_generated/api";
+import { useRouter } from 'next/navigation';
 
 interface RemoveDialogProps {
   documentId: Id<"documents">;
@@ -26,6 +27,7 @@ export const RemoveDialog = ({
   documentId,
   children
 }: RemoveDialogProps) => {
+  const router = useRouter()
   const remove = useMutation(api.documents.removeById);
   const [isRemoving, setIsRemoving] = useState(false)
 
@@ -54,7 +56,10 @@ export const RemoveDialog = ({
               setIsRemoving(true)
               remove({ id: documentId })
                 .catch(() => toast.error("Something went wrong"))
-                .then(()=> toast.success("Document removed"))
+                .then(() => {
+                  toast.success("Document removed");
+                  router.push('/')
+                })
                 .finally(() => setIsRemoving(false))
             }}
             className="bg-red-600 hover:bg-red-600/70"

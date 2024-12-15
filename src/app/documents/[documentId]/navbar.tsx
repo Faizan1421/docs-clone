@@ -2,8 +2,13 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+
 import { useMutation } from 'convex/react';
 import { api } from '../../../../convex/_generated/api';
+
+import { RemoveDialog } from '@/components/remove-dialog';
+import { RenameDialog } from '@/components/rename-dialog';
+
 import { DocumentInput } from './document-input'
 import { BsFilePdf } from 'react-icons/bs'
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs';
@@ -62,7 +67,7 @@ export const Navbar = ({ data }: NavbarProps) => {
       .catch(() => toast.error("Something went wrong"))
       .then((id) => {
         toast.success("Document created")
-        router.push(`/document/${id}`)
+        router.push(`/documents/${id}`)
       })
   }
 
@@ -162,19 +167,33 @@ export const Navbar = ({ data }: NavbarProps) => {
                     New Document
                   </MenubarItem>
                   <MenubarSeparator />
-                  <MenubarItem>
-                    <FilePenIcon className='size-4 mr-2' />
-                    Rename
-                  </MenubarItem>
+                  <RenameDialog documentId={data._id} initialTitle={data.title}>
+                    <MenubarItem
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                      onSelect={(e) => e.preventDefault()}
+                    >
+                      <FilePenIcon className='size-4 mr-2' />
+                      Rename
+                    </MenubarItem>
+                  </RenameDialog>
                   <MenubarSeparator />
                   <MenubarItem onClick={() => window.print()}>
                     <PrinterIcon className='size-4 mr-2' />
                     Print <MenubarShortcut>⌘P </MenubarShortcut>
                   </MenubarItem>
-                  <MenubarItem>
-                    <TrashIcon className='size-4 mr-2' />
-                    Remove
-                  </MenubarItem>
+                  <RemoveDialog documentId={data._id}>
+                    <MenubarItem
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                      onSelect={(e) => e.preventDefault()}
+                    >
+                      <TrashIcon className='size-4 mr-2' />
+                      Remove
+                    </MenubarItem>
+                  </RemoveDialog>
                 </MenubarContent>
               </MenubarMenu>
 

@@ -579,6 +579,7 @@ const ToolbarButton = ({
 export const Toolbar = () => {
   const { editor } = useEditorStore()
 
+
   //sections
   const sections: {
     label: string;
@@ -635,7 +636,7 @@ export const Toolbar = () => {
         {
           label: "Comments",
           icon: MessageSquarePlus,
-          isActive: editor?.isActive("liveblocksCommentMark"), 
+          isActive: editor?.isActive("liveblocksCommentMark"),
           onClick: () => editor?.chain().focus().addPendingComment().run(),
         },
         {
