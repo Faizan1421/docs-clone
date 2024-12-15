@@ -1,8 +1,8 @@
-# Google Docs Clone | Next 15
+# Google Docs Clone
 
 ![Google Docs Clone Banner](https://i.ibb.co/qdtTM6R/docs-clone-banner.png)
 
-This is a Google Docs clone built with **Next.js**, **React**, **Tailwind CSS**, and real-time collaboration features using **Liveblocks**, **Convex**, and **Clerk** for authentication.
+This is a Google Docs clone built with **Next.js 15**, **React**, **Tailwind CSS**, and real-time collaboration features using **Liveblocks**, **Convex**, and **Clerk** for authentication.
 
 ⭐ **Please give a star to my repo; it will help me a lot!** ⭐
 
