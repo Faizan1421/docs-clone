@@ -66,7 +66,6 @@ Before you begin, ensure you have the following:
      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
      CLERK_SECRET_KEY=your_clerk_secret_key
 
-     LIVE_BLOCK_PUBLIC_KEY=your_liveblocks_public_key
      LIVE_BLOCK_SECRET_KEY=your_liveblocks_secret_key
      ```
 
